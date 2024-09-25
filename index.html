@@ -58,7 +58,8 @@
             if (platform === 'android') {
                 switch (bank) {
                     case 'kakaobank':
-                        url = `intent://send?accountNo=936-12-101085&bankCode=090#Intent;scheme=kakaobank;package=com.kakao.bank;end`;
+                        // 카카오뱅크 Android
+                        url = `intent://send?accountNo=93612101085&bankCode=NH#Intent;scheme=kakaobank;package=com.kakao.bank;end`;
                         break;
                     case 'wooribank':
                         url = `intent://transfer?accountNo=936-12-101085&bankCode=020#Intent;scheme=wooribank;package=com.wooribank.won;end`;
@@ -86,7 +87,8 @@
             } else if (platform === 'ios') {
                 switch (bank) {
                     case 'kakaobank':
-                        url = `kakaobank://send?accountNo=936-12-101085&bankCode=090`;
+                        // 카카오뱅크 iOS
+                        url = `kakaobank://send?accountNo=93612101085&bankCode=NH`;
                         break;
                     case 'wooribank':
                         url = `wooribank://transfer?accountNo=936-12-101085&bankCode=020`;
