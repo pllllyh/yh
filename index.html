@@ -50,67 +50,65 @@
                 return 'unknown';
             }
         }
+function openBankApp(bank) {
+    const platform = getPlatform();
+    const accountNumber = "936-12-101085";
+    let url = '';
 
-        function openBankApp(bank) {
-            const platform = getPlatform();
-            const accountNumber = "936-12-101085";
-            let url = '';
-
-            if (platform === 'android') {
-                switch (bank) {
-                    case 'kakaobank':
-                        url = `intent://send?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=kakaobank;package=com.kakao.bank;end`;
-                        break;
-                    case 'wooribank':
-                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=wooribank;package=com.wooribank.won;end`;
-                        break;
-                    case 'ibk':
-                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=ibk;package=com.ibk.spbs;end`;
-                        break;
-                    case 'nonghyup':
-                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=nonghyup;package=com.nh.smart;end`;
-                        break;
-                    case 'toss':
-                        url = `intent://send?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=toss;package=viva.republica.toss;end`;
-                        break;
-                    case 'shinhan':
-                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=shinhanbank;package=com.shinhan.sbanking;end`;
-                        break;
-                    case 'kbbank':
-                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=kbbank;package=com.kbstar.kbbank;end`;
-                        break;
-                }
-            } else if (platform === 'ios') {
-                switch (bank) {
-                    case 'kakaobank':
-                        url = `kakaobank://send?accountNo=${accountNumber}&bankCode=NH`;
-                        break;
-                    case 'wooribank':
-                        url = `wooribank://transfer?accountNo=${accountNumber}&bankCode=NH`;
-                        break;
-                    case 'ibk':
-                        url = `i-onebank://transfer?accountNo=${accountNumber}&bankCode=NH`;
-                        break;
-                    case 'nonghyup':
-                        url = `nhsmartbanking://transfer?accountNo=${accountNumber}&bankCode=NH`;
-                        break;
-                    case 'toss':
-                        url = `toss://send?accountNo=${accountNumber}&bankCode=NH`;
-                        break;
-                    case 'shinhan':
-                        url = `shinhanbank://transfer?accountNo=${accountNumber}&bankCode=NH`;
-                        break;
-                    case 'kbbank':
-                        url = `kbbank://transfer?accountNo=${accountNumber}&bankCode=NH`;
-                        break;
-                }
-            } else {
-                alert('지원하지 않는 플랫폼입니다.');
-                return;
-            }
-
-            window.location.href = url;
+    if (platform === 'android') {
+        switch (bank) {
+            case 'kakaobank':
+                url = `intent://send?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=kakaobank;package=com.kakao.bank;end`;
+                break;
+            case 'wooribank':
+                url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=wooribank;package=com.wooribank.wonbanking;end`;
+                break;
+            case 'ibk':
+                url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=ibk;package=com.ibk.spbs;end`;
+                break;
+            case 'nonghyup':
+                url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=nonghyup;package=com.nh.smartbanking;end`;
+                break;
+            case 'toss':
+                url = `intent://send?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=toss;package=viva.republica.toss;end`;
+                break;
+            case 'shinhan':
+                url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=shinhanbank;package=com.shinhan.sbanking;end`;
+                break;
+            case 'kbbank':
+                url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=kbbank;package=com.kbstar.kbbank;end`;
+                break;
         }
+    } else if (platform === 'ios') {
+        switch (bank) {
+            case 'kakaobank':
+                url = `kakaobank://send?accountNo=${accountNumber}&bankCode=NH`;
+                break;
+            case 'wooribank':
+                url = `wooribank://transfer?accountNo=${accountNumber}&bankCode=NH`;
+                break;
+            case 'ibk':
+                url = `i-onebank://transfer?accountNo=${accountNumber}&bankCode=NH`;
+                break;
+            case 'nonghyup':
+                url = `nhsmartbanking://transfer?accountNo=${accountNumber}&bankCode=NH`;
+                break;
+            case 'toss':
+                url = `toss://send?accountNo=${accountNumber}&bankCode=NH`;
+                break;
+            case 'shinhan':
+                url = `shinhanbank://transfer?accountNo=${accountNumber}&bankCode=NH`;
+                break;
+            case 'kbbank':
+                url = `kbbank://transfer?accountNo=${accountNumber}&bankCode=NH`;
+                break;
+        }
+    } else {
+        alert('지원하지 않는 플랫폼입니다.');
+        return;
+    }
+
+    window.location.href = url;
     </script>
 </head>
 <body onload="copyAccountNumber()">
