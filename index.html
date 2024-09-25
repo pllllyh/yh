@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>은행 앱 선택</title>
     <style>
+        body {
+            background-color: #d0f8b7; /* 배경색 d0f8b7로 설정 */
+        }
         .app-icons {
             display: flex;
             justify-content: space-around;
@@ -26,10 +29,23 @@
             font-size: 14px;
             margin-top: 10px;
         }
+        .small-text {
+            font-size: 12px;
+            color: gray;
+            text-align: center;
+        }
+        .footer-text {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            color: white; /* 글자 흰색 */
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* 테두리 검정 */
+        }
     </style>
     <script>
         function copyAccountNumber() {
-            const accountNumber = "936-12-101085";
+            const accountNumber = "[농협] 936-12-101085 김병수";
             const tempInput = document.createElement("input");
             tempInput.value = accountNumber;
             document.body.appendChild(tempInput);
@@ -51,91 +67,71 @@
         }
 
         function openBankApp(bank) {
-    const platform = getPlatform();
-    const accountNumber = "936-12-101085";
-    let url = '';
+            const platform = getPlatform();
+            const accountNumber = "936-12-101085";
+            let url = '';
 
-    if (platform === 'android') {
-        switch (bank) {
-            case 'kakaobank':
-                // 카카오뱅크 Android
-                url = `intent://send?accountNo=${accountNumber}&bankCode=090#Intent;scheme=kakaobank;package=com.kakao.bank;end`;
-                break;
-            case 'wooribank':
-                // 우리은행 Android
-                url = `intent://transfer?accountNo=${accountNumber}&bankCode=020#Intent;scheme=wooribank;package=com.wooribank.won;end`;
-                break;
-            case 'ibk':
-                // 기업은행 Android
-                url = `intent://transfer?accountNo=${accountNumber}&bankCode=003#Intent;scheme=i-onebank;package=com.ibk.spbs;end`;
-                break;
-            case 'nonghyup':
-                // 농협은행 Android
-                url = `intent://transfer?accountNo=${accountNumber}&bankCode=011#Intent;scheme=nhsmartbanking;package=com.nh.smart;end`;
-                break;
-            case 'toss':
-                // 토스 Android
-                url = `intent://send?accountNo=${accountNumber}&bankCode=090#Intent;scheme=toss;package=viva.republica.toss;end`;
-                break;
-            case 'shinhan':
-                // 신한은행 Android
-                url = `intent://transfer?accountNo=${accountNumber}&bankCode=088#Intent;scheme=shinhanbank;package=com.shinhan.sbanking;end`;
-                break;
-            case 'kbbank':
-                // 국민은행 Android
-                url = `intent://transfer?accountNo=${accountNumber}&bankCode=004#Intent;scheme=kbbank;package=com.kbstar.kbbank;end`;
-                break;
-            default:
-                alert('해당 은행 앱이 설치되어 있지 않습니다. 스토어로 이동합니다.');
-                window.location.href = 'https://play.google.com/store/apps';
+            if (platform === 'android') {
+                switch (bank) {
+                    case 'kakaobank':
+                    case 'wooribank':
+                    case 'ibk':
+                    case 'nonghyup':
+                        url = 'https://play.google.com/store/apps'; // 플레이스토어로 이동
+                        break;
+                    case 'toss':
+                        url = `intent://send?accountNo=${accountNumber}&bankCode=090#Intent;scheme=toss;package=viva.republica.toss;end`;
+                        break;
+                    case 'shinhan':
+                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=088#Intent;scheme=shinhanbank;package=com.shinhan.sbanking;end`;
+                        break;
+                    case 'kbbank':
+                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=004#Intent;scheme=kbbank;package=com.kbstar.kbbank;end`;
+                        break;
+                    default:
+                        alert('해당 은행 앱이 설치되어 있지 않습니다. 스토어로 이동합니다.');
+                        window.location.href = 'https://play.google.com/store/apps';
+                        return;
+                }
+            } else if (platform === 'ios') {
+                switch (bank) {
+                    case 'kakaobank':
+                        url = `kakaobank://send?accountNo=93612101085&bankCode=090`;
+                        break;
+                    case 'wooribank':
+                        url = `wooribank://transfer?accountNo=936-12-101085&bankCode=020`;
+                        break;
+                    case 'ibk':
+                        url = `i-onebank://transfer?accountNo=936-12-101085&bankCode=003`;
+                        break;
+                    case 'nonghyup':
+                        url = `nhsmartbanking://transfer?accountNo=936-12-101085&bankCode=011`;
+                        break;
+                    case 'toss':
+                        url = `toss://send?accountNo=${accountNumber}&bankCode=090`;
+                        break;
+                    case 'shinhan':
+                        url = `shinhanbank://transfer?accountNo=${accountNumber}&bankCode=088`;
+                        break;
+                    case 'kbbank':
+                        url = `kbbank://transfer?accountNo=${accountNumber}&bankCode=004`;
+                        break;
+                    default:
+                        alert('해당 은행 앱이 설치되어 있지 않습니다. App Store로 이동합니다.');
+                        window.location.href = 'https://apps.apple.com/';
+                        return;
+                }
+            } else {
+                alert('지원하지 않는 플랫폼입니다.');
                 return;
-        }
-    } else if (platform === 'ios') {
-        switch (bank) {
-            case 'kakaobank':
-                // 카카오뱅크 iOS
-                url = `kakaobank://send?accountNo=${accountNumber}&bankCode=090`;
-                break;
-            case 'wooribank':
-                // 우리은행 iOS
-                url = `wooribank://transfer?accountNo=${accountNumber}&bankCode=020`;
-                break;
-            case 'ibk':
-                // 기업은행 iOS
-                url = `i-onebank://transfer?accountNo=${accountNumber}&bankCode=003`;
-                break;
-            case 'nonghyup':
-                // 농협은행 iOS
-                url = `nhsmartbanking://transfer?accountNo=${accountNumber}&bankCode=011`;
-                break;
-            case 'toss':
-                // 토스 iOS
-                url = `toss://send?accountNo=${accountNumber}&bankCode=090`;
-                break;
-            case 'shinhan':
-                // 신한은행 iOS
-                url = `shinhanbank://transfer?accountNo=${accountNumber}&bankCode=088`;
-                break;
-            case 'kbbank':
-                // 국민은행 iOS
-                url = `kbbank://transfer?accountNo=${accountNumber}&bankCode=004`;
-                break;
-            default:
-                alert('해당 은행 앱이 설치되어 있지 않습니다. App Store로 이동합니다.');
-                window.location.href = 'https://apps.apple.com/';
-                return;
-        }
-    } else {
-        alert('지원하지 않는 플랫폼입니다.');
-        return;
-    }
+            }
 
-    window.location.href = url;
-}
+            window.location.href = url;
+        }
     </script>
 </head>
 <body onload="copyAccountNumber()">
-    <h2>계좌번호: 936-12-101085</h2>
+    <h2>[농협] 936-12-101085 김병수</h2>
     <p>계좌번호가 자동으로 복사되었습니다. 해당 계좌로 송금하실 수 있습니다.</p>
     <button onclick="copyAccountNumber()">계좌번호 다시 복사하기</button>
 
@@ -172,7 +168,8 @@
         </div>
     </div>
 
-    <p>송금할 은행 앱이 설치되어 있지 않다면, <a href="https://play.google.com/store" target="_blank">Google Play</a> 또는 <a href="https://www.apple.com/kr/app-store/" target="_blank">App Store</a>에서 앱을 설치하세요.</p>
+    <p class="small-text">인쇄, 현금인출, 매점구매 관련</p>
+
+    <p class="footer-text">팔음산자기비전아카데미</p>
 </body>
 </html>
-
