@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>계좌번호 복사</title>
+    <title>계좌번호 복사 및 은행 선택</title>
     <script>
         function copyAccountNumber() {
-            const accountNumber = "936-12-101085";
+            const accountNumber = "936-12-101085";  // 여기 계좌번호를 입력하세요
             const tempInput = document.createElement("input");
             tempInput.value = accountNumber;
             document.body.appendChild(tempInput);
@@ -19,7 +19,15 @@
 </head>
 <body onload="copyAccountNumber()">
     <h2>계좌번호: 936-12-101085</h2>
-    <p>계좌번호가 자동으로 복사되었습니다. 해당 계좌로 송금하실 수 있습니다.</p>
+    <p>계좌번호가 클립보드로 복사되었습니다. 원하는 은행 앱을 선택하여 송금할 수 있습니다:</p>
+    
+    <ul>
+        <li><a href="kakaobank://send?accountNo=93612101085&bankCode=NH">카카오뱅크로 송금하기</a></li>
+        <li><a href="shinhanbank://transfer?accountNo=93612101085&bankCode=NH">신한은행으로 송금하기</a></li>
+        <li><a href="kbbank://transfer?accountNo=93612101085&bankCode=NH">국민은행으로 송금하기</a></li>
+        <li><a href="toss://send?accountNo=93612101085&bankCode=NH">토스로 송금하기</a></li>
+    </ul>
+
     <button onclick="copyAccountNumber()">계좌번호 다시 복사하기</button>
 </body>
 </html>
