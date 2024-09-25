@@ -58,50 +58,58 @@
             if (platform === 'android') {
                 switch (bank) {
                     case 'kakaobank':
-                        url = `intent://send?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=kakaobank;package=com.kakao.bank;end`;
+                        url = `intent://send?accountNo=${accountNumber}&bankCode=090#Intent;scheme=kakaobank;package=com.kakao.bank;end`;
                         break;
                     case 'wooribank':
-                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=wooribank;package=com.wooribank.won;end`;
+                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=020#Intent;scheme=wooribank;package=com.wooribank.won;end`;
                         break;
                     case 'ibk':
-                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=IBK#Intent;scheme=i-onebank;package=com.ibk.spbs;end`;
+                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=003#Intent;scheme=i-onebank;package=com.ibk.spbs;end`;
                         break;
                     case 'nonghyup':
-                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=nhsmartbanking;package=com.nh.smart;end`;
+                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=011#Intent;scheme=nhsmartbanking;package=com.nh.smart;end`;
                         break;
                     case 'toss':
-                        url = `intent://send?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=toss;package=viva.republica.toss;end`;
+                        url = `intent://send?accountNo=${accountNumber}&bankCode=090#Intent;scheme=toss;package=viva.republica.toss;end`;
                         break;
                     case 'shinhan':
-                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=shinhanbank;package=com.shinhan.sbanking;end`;
+                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=088#Intent;scheme=shinhanbank;package=com.shinhan.sbanking;end`;
                         break;
                     case 'kbbank':
-                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=kbbank;package=com.kbstar.kbbank;end`;
+                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=004#Intent;scheme=kbbank;package=com.kbstar.kbbank;end`;
                         break;
+                    default:
+                        alert('해당 은행 앱이 설치되어 있지 않습니다. 스토어로 이동합니다.');
+                        window.location.href = 'https://play.google.com/store/apps';
+                        return;
                 }
             } else if (platform === 'ios') {
                 switch (bank) {
                     case 'kakaobank':
-                        url = `kakaobank://send?accountNo=${accountNumber}&bankCode=NH`;
+                        url = `kakaobank://send?accountNo=${accountNumber}&bankCode=090`;
                         break;
                     case 'wooribank':
-                        url = `wooribank://transfer?accountNo=${accountNumber}&bankCode=NH`;
+                        url = `wooribank://transfer?accountNo=${accountNumber}&bankCode=020`;
                         break;
                     case 'ibk':
-                        url = `i-onebank://transfer?accountNo=${accountNumber}&bankCode=NH`;
+                        url = `i-onebank://transfer?accountNo=${accountNumber}&bankCode=003`;
                         break;
                     case 'nonghyup':
-                        url = `nhsmartbanking://transfer?accountNo=${accountNumber}&bankCode=NH`;
+                        url = `nhsmartbanking://transfer?accountNo=${accountNumber}&bankCode=011`;
                         break;
                     case 'toss':
-                        url = `toss://send?accountNo=${accountNumber}&bankCode=NH`;
+                        url = `toss://send?accountNo=${accountNumber}&bankCode=090`;
                         break;
                     case 'shinhan':
-                        url = `shinhanbank://transfer?accountNo=${accountNumber}&bankCode=NH`;
+                        url = `shinhanbank://transfer?accountNo=${accountNumber}&bankCode=088`;
                         break;
                     case 'kbbank':
-                        url = `kbbank://transfer?accountNo=${accountNumber}&bankCode=NH`;
+                        url = `kbbank://transfer?accountNo=${accountNumber}&bankCode=004`;
                         break;
+                    default:
+                        alert('해당 은행 앱이 설치되어 있지 않습니다. App Store로 이동합니다.');
+                        window.location.href = 'https://apps.apple.com/';
+                        return;
                 }
             } else {
                 alert('지원하지 않는 플랫폼입니다.');
@@ -117,7 +125,7 @@
     <p>계좌번호가 자동으로 복사되었습니다. 해당 계좌로 송금하실 수 있습니다.</p>
     <button onclick="copyAccountNumber()">계좌번호 다시 복사하기</button>
 
-    <h3>사용할 은행 앱을 선택하세요:</h3>
+    <h3>송금하실 은행앱을 열어주세요</h3>
 
     <div class="app-icons">
         <div>
@@ -129,7 +137,7 @@
             <a href="javascript:void(0);" onclick="openBankApp('wooribank')">우리은행</a>
         </div>
         <div>
-            <img src="https://raw.github.com/pllllyh/yh/main/기업.png" alt="기업은행">
+            <img src="https://raw.githubusercontent.com/pllllyh/yh/main/기업.png" alt="기업은행">
             <a href="javascript:void(0);" onclick="openBankApp('ibk')">기업은행</a>
         </div>
         <div>
@@ -145,7 +153,7 @@
             <a href="javascript:void(0);" onclick="openBankApp('shinhan')">신한은행</a>
         </div>
         <div>
-            <img src="https://raw.github.com/pllllyh/yh/main/kb.png" alt="국민은행">
+            <img src="https://raw.githubusercontent.com/pllllyh/yh/main/kb.png" alt="국민은행">
             <a href="javascript:void(0);" onclick="openBankApp('kbbank')">국민은행</a>
         </div>
     </div>
