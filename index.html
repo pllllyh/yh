@@ -58,16 +58,16 @@ function openBankApp(bank) {
     if (platform === 'android') {
         switch (bank) {
             case 'kakaobank':
-                url = `intent://send?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=kakaobank;package=com.kakaobank;end`;
+                url = `intent://send?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=kakaobank;package=com.kakao.bank;end`;
                 break;
             case 'wooribank':
-                url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=wooribank;package=com.wooribank.wonbanking;end`;
+                url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=wooribank;package=com.wooribank.won;end`;
                 break;
             case 'ibk':
-                url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=ibk;package=com.ibk.spbs;end`;
+                url = `intent://transfer?accountNo=${accountNumber}&bankCode=IBK#Intent;scheme=i-onebank;package=com.ibk.spbs;end`;
                 break;
             case 'nonghyup':
-                url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=nonghyup;package=com.nh.smartbanking;end`;
+                url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=nhsmartbanking;package=com.nh.smart;end`;
                 break;
             case 'toss':
                 url = `intent://send?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=toss;package=viva.republica.toss;end`;
@@ -109,7 +109,7 @@ function openBankApp(bank) {
     }
 
     window.location.href = url;
-    </script>
+}
 </head>
 <body onload="copyAccountNumber()">
     <h2>계좌번호: 936-12-101085</h2>
