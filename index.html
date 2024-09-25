@@ -61,23 +61,23 @@
                     case 'kakaobank':
                         url = `intent://send?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=kakaobank;package=com.kakao.bank;end`;
                         break;
+                    case 'wooribank':
+                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=wooribank;package=com.wooribank.won;end`;
+                        break;
+                    case 'ibk':
+                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=ibk;package=com.ibk.spbs;end`;
+                        break;
+                    case 'nonghyup':
+                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=nonghyup;package=com.nh.smart;end`;
+                        break;
+                    case 'toss':
+                        url = `intent://send?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=toss;package=viva.republica.toss;end`;
+                        break;
                     case 'shinhan':
                         url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=shinhanbank;package=com.shinhan.sbanking;end`;
                         break;
                     case 'kbbank':
                         url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=kbbank;package=com.kbstar.kbbank;end`;
-                        break;
-                    case 'toss':
-                        url = `intent://send?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=toss;package=viva.republica.toss;end`;
-                        break;
-                    case 'wooribank':
-                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=wooribank;package=com.wooribank.wbank;end`;
-                        break;
-                    case 'ibk':
-                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=ibk;package=com.ibk.sbanking;end`;
-                        break;
-                    case 'nonghyup':
-                        url = `intent://transfer?accountNo=${accountNumber}&bankCode=NH#Intent;scheme=nonghyup;package=com.nonghyup.smartbanking;end`;
                         break;
                 }
             } else if (platform === 'ios') {
@@ -85,23 +85,23 @@
                     case 'kakaobank':
                         url = `kakaobank://send?accountNo=${accountNumber}&bankCode=NH`;
                         break;
+                    case 'wooribank':
+                        url = `wooribank://transfer?accountNo=${accountNumber}&bankCode=NH`;
+                        break;
+                    case 'ibk':
+                        url = `i-onebank://transfer?accountNo=${accountNumber}&bankCode=NH`;
+                        break;
+                    case 'nonghyup':
+                        url = `nhsmartbanking://transfer?accountNo=${accountNumber}&bankCode=NH`;
+                        break;
+                    case 'toss':
+                        url = `toss://send?accountNo=${accountNumber}&bankCode=NH`;
+                        break;
                     case 'shinhan':
                         url = `shinhanbank://transfer?accountNo=${accountNumber}&bankCode=NH`;
                         break;
                     case 'kbbank':
                         url = `kbbank://transfer?accountNo=${accountNumber}&bankCode=NH`;
-                        break;
-                    case 'toss':
-                        url = `toss://send?accountNo=${accountNumber}&bankCode=NH`;
-                        break;
-                    case 'wooribank':
-                        url = `wooribank://transfer?accountNo=${accountNumber}&bankCode=NH`;
-                        break;
-                    case 'ibk':
-                        url = `ibk://transfer?accountNo=${accountNumber}&bankCode=NH`;
-                        break;
-                    case 'nonghyup':
-                        url = `nonghyup://transfer?accountNo=${accountNumber}&bankCode=NH`;
                         break;
                 }
             } else {
@@ -126,18 +126,6 @@
             <a href="javascript:void(0);" onclick="openBankApp('kakaobank')">카카오뱅크</a>
         </div>
         <div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Shinhan_logo.svg" alt="신한은행">
-            <a href="javascript:void(0);" onclick="openBankApp('shinhan')">신한은행</a>
-        </div>
-        <div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Kookmin_Bank_logo.svg/1200px-Kookmin_Bank_logo.svg.png" alt="국민은행">
-            <a href="javascript:void(0);" onclick="openBankApp('kbbank')">국민은행</a>
-        </div>
-        <div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Toss_logo_2022.svg/1200px-Toss_logo_2022.svg.png" alt="토스">
-            <a href="javascript:void(0);" onclick="openBankApp('toss')">토스</a>
-        </div>
-        <div>
             <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Woori_Bank_logo.svg" alt="우리은행">
             <a href="javascript:void(0);" onclick="openBankApp('wooribank')">우리은행</a>
         </div>
@@ -149,8 +137,21 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Nonghyup_logo.png" alt="농협은행">
             <a href="javascript:void(0);" onclick="openBankApp('nonghyup')">농협은행</a>
         </div>
+        <div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Toss_logo_2022.svg" alt="토스">
+            <a href="javascript:void(0);" onclick="openBankApp('toss')">토스</a>
+        </div>
+        <div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/Shinhan_logo.svg" alt="신한은행">
+            <a href="javascript:void(0);" onclick="openBankApp('shinhan')">신한은행</a>
+        </div>
+        <div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Kookmin_Bank_logo.svg/1200px-Kookmin_Bank_logo.svg.png" alt="국민은행">
+            <a href="javascript:void(0);" onclick="openBankApp('kbbank')">국민은행</a>
+        </div>
     </div>
 
     <p>송금할 은행 앱이 설치되어 있지 않다면, <a href="https://play.google.com/store" target="_blank">Google Play</a> 또는 <a href="https://www.apple.com/kr/app-store/" target="_blank">App Store</a>에서 앱을 설치하세요.</p>
 </body>
 </html>
+
