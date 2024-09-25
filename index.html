@@ -58,7 +58,7 @@
             if (platform === 'android') {
                 switch (bank) {
                     case 'kakaobank':
-                        url = intent://send?accountNo=936-12-101085&bankCode=090#Intent;scheme=kakaobank;package=com.kakao.bank;end';
+                        url = `intent://send?accountNo=936-12-101085&bankCode=090#Intent;scheme=kakaobank;package=com.kakao.bank;end`;
                         break;
                     case 'wooribank':
                         url = `intent://transfer?accountNo=936-12-101085&bankCode=020#Intent;scheme=wooribank;package=com.wooribank.won;end`;
@@ -67,7 +67,7 @@
                         url = `intent://transfer?accountNo=936-12-101085&bankCode=003#Intent;scheme=i-onebank;package=com.ibk.spbs;end`;
                         break;
                     case 'nonghyup':
-                        url = intent://transfer?accountNo=936-12-101085&bankCode=011#Intent;scheme=nhsmartbanking;package=com.nh.smart;end';
+                        url = `intent://transfer?accountNo=936-12-101085&bankCode=011#Intent;scheme=nhsmartbanking;package=com.nh.smart;end`;
                         break;
                     case 'toss':
                         url = `intent://send?accountNo=${accountNumber}&bankCode=090#Intent;scheme=toss;package=viva.republica.toss;end`;
