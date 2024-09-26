@@ -16,13 +16,13 @@
         }
         .app-icons {
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+            flex-direction: column; /* 상하 배치 */
+            align-items: center;
             margin-top: 20px;
         }
         .app-icons div {
             text-align: center;
-            margin: 10px;
+            margin: 20px 0; /* 상하 간격 설정 */
         }
         .app-icons img {
             width: 60px;
@@ -98,8 +98,8 @@
 </head>
 <body onload="copyAccountNumber()">
     <h2><span class="highlight">[농협]</span> 936-12-101085 김병수</h2>
-    <p class="small-text">인쇄, 현금인출, 매점구매 관련</p>
-    <p>계좌번호가 자동으로 복사되었습니다. </p>
+    <p class="small-text">인쇄, 현금인출, 매점구매 관련</p> <!-- 인쇄 관련 문구 위치 수정 -->
+    <p>현재 계좌번호가 자동으로 복사되었습니다. </p>
     <button onclick="copyAccountNumber()">계좌번호 다시 복사하기</button>
 
     <h3>송금하실 은행앱을 찾아주세요</h3>
