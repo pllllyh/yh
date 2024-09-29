@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 계좌번호 복사링크 입니다.</title>
+    <title>계좌번호 복사링크 입니다.</title>
+    
+    <!-- QR 코드로 인식할 때 사용할 이미지 설정 -->
+    <meta property="og:image" content="https://raw.githubusercontent.com/pllllyh/yh/main/1.png" />
+    
     <style>
         @font-face {
             font-family: 'HoonWhitecat';
@@ -97,6 +101,8 @@
     </script>
 </head>
 <body onload="copyAccountNumber()">
+    <!-- QR 인식시 이미지는 표시되지 않고 메타 데이터로 처리됨 -->
+    
     <h2><span class="highlight">[농협]</span> 936-12-101085 김병수</h2>
     <p class="small-text">인쇄, 현금인출, 매점구매 관련</p> <!-- 인쇄 관련 문구 위치 수정 -->
     <p>송금 후 화면을 보여주세요. </p>
@@ -118,3 +124,4 @@
     <p class="footer-text">팔음산자기발전소 관리기숙아카데미</p> <!-- 텍스트 수정 및 글씨 크기 3pt 증가 -->
 </body>
 </html>
+
