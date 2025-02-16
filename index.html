@@ -1,172 +1,182 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>계좌번호 복사링크 입니다.</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>계좌번호 복사링크 입니다.</title>
 
-    <!-- QR 코드 인식 시 사용할 이미지 설정 -->
-    <meta property="og:image" content="https://raw.githubusercontent.com/plllllyh/yh/main/1.png" />
-    <meta property="og:title" content="계좌번호 복사링크 입니다." />
-    <meta property="og:description" content="이 링크를 통해 계좌번호를 쉽게 복사하세요." />
-    <meta property="og:url" content="https://plllllyh.github.io/yh/" />
+  <!-- QR 코드 인식 시 사용할 이미지 설정 -->
+  <meta property="og:image" content="https://plllllyh.github.io/yh/1.png" />
+  <meta property="og:title" content="계좌번호 복사링크 입니다." />
+  <meta property="og:description" content="이 링크를 통해 계좌번호를 쉽게 복사하세요." />
+  <meta property="og:url" content="https://plllllyh.github.io/yh/" />
 
-    <style>
-        @font-face {
-            font-family: 'HoonWhitecat';
-            src: url('https://raw.githubusercontent.com/plllllyh/yh/main/1HoonWhitecat%20Regular.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-        body {
-            background-color: #d0f8b7;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-        .app-icons {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-        .app-icons div {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .app-icons img {
-            width: 60px;
-            height: 60px;
-        }
-        .app-icons a {
-            display: block;
-            text-decoration: none;
-            color: black;
-            font-size: 14px;
-            margin-top: 10px;
-        }
-        .small-text {
-            font-size: 12px;
-            color: gray;
-            text-align: center;
-        }
-        .footer-text {
-            text-align: center;
-            position: absolute;
-            bottom: 10px;
-            left: 0;
-            right: 0;
-            font-family: 'HoonWhitecat', sans-serif;
-            font-size: 22px;
-            font-weight: bold;
-            color: white;
-            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-        }
-        .highlight {
-            color: #6aa120;
-        }
+  <style>
+    @font-face {
+      font-family: 'HoonWhitecat';
+      src: url('https://plllllyh.github.io/yh/1HoonWhitecat%20Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    body {
+      background-color: #d0f8b7;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    .app-icons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .app-icons div {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .app-icons img {
+      width: 60px;
+      height: 60px;
+    }
+    .app-icons a {
+      display: block;
+      text-decoration: none;
+      color: black;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .small-text {
+      font-size: 12px;
+      color: gray;
+      text-align: center;
+    }
+    .footer-text {
+      text-align: center;
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      font-family: 'HoonWhitecat', sans-serif;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    }
+    .highlight {
+      color: #6aa120;
+    }
+    /* 깜박이는 텍스트 효과 */
+    .blinking-text {
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffffff;
+      background-color: #ff5722;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      animation: blink 1s infinite;
+      margin: 20px auto;
+      width: fit-content;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    /* 중앙에 크게 배치되고 pulse 효과가 적용된 복사 버튼 */
+    .copy-button {
+      display: block;
+      width: 90%;
+      max-width: 350px;
+      margin: 40px auto;
+      padding: 20px;
+      font-size: 24px;
+      background-color: #6aa120;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+      animation: pulse 2s infinite;
+      transition: background-color 0.3s;
+    }
+    .copy-button:hover {
+      background-color: #5a8e1b;
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(106, 161, 32, 0.7);
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(106, 161, 32, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(106, 161, 32, 0);
+      }
+    }
+  </style>
 
-        /* 깜박이는 텍스트 효과 */
-        .blinking-text {
-            font-size: 18px;
-            font-weight: bold;
-            color: #ffffff;
-            background-color: #ff5722;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-            animation: blink 1s infinite;
-            margin: 20px auto;
-            width: fit-content;
-        }
+  <script>
+    function copyAccountNumber() {
+      const accountNumber = "[농협] 936-12-101085 김병수";
+      const tempInput = document.createElement("input");
+      tempInput.value = accountNumber;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+      // 복사 후 alert 제거 – 단지 복사 기능만 실행합니다.
+    }
 
-        @keyframes blink {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0;
-            }
-        }
-        
-        /* 중앙에 크게 배치된 복사 버튼 */
-        .copy-button {
-            display: block;
-            width: 90%;
-            max-width: 350px;
-            margin: 40px auto;
-            padding: 20px;
-            font-size: 24px;
-            background-color: #6aa120;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            text-align: center;
-        }
-    </style>
+    function getPlatform() {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      if (/android/i.test(userAgent)) {
+        return 'android';
+      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return 'ios';
+      } else {
+        return 'unknown';
+      }
+    }
 
-    <script>
-        function copyAccountNumber() {
-            const accountNumber = "[농협] 936-12-101085 김병수";
-            const tempInput = document.createElement("input");
-            tempInput.value = accountNumber;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-            // alert 창 제거 – 복사 후 팝업 없이 복사만 진행합니다.
-        }
-
-        function getPlatform() {
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            if (/android/i.test(userAgent)) {
-                return 'android';
-            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                return 'ios';
-            } else {
-                return 'unknown';
-            }
-        }
-
-        function openStoreLink() {
-            const platform = getPlatform();
-            let url = '';
-
-            if (platform === 'android') {
-                url = 'https://play.google.com/store/apps';
-            } else if (platform === 'ios') {
-                url = 'https://apps.apple.com/';
-            } else {
-                alert('지원하지 않는 플랫폼입니다.');
-                return;
-            }
-
-            window.location.href = url;
-        }
-    </script>
+    function openStoreLink() {
+      const platform = getPlatform();
+      let url = '';
+      if (platform === 'android') {
+        url = 'https://play.google.com/store/apps';
+      } else if (platform === 'ios') {
+        url = 'https://apps.apple.com/';
+      } else {
+        alert('지원하지 않는 플랫폼입니다.');
+        return;
+      }
+      window.location.href = url;
+    }
+  </script>
 </head>
 <body>
-    <h2 style="text-align: center;"><span class="highlight">[농협]</span> 936-12-101085 김병수</h2>
-    <p class="small-text">인쇄, 현금인출, 매점구매 관련</p>
-    <p class="blinking-text">송금 후 화면을 보여주세요.</p>
+  <h2 style="text-align: center;"><span class="highlight">[농협]</span> 936-12-101085 김병수</h2>
+  <p class="small-text">인쇄, 현금인출, 매점구매 관련</p>
+  <p class="blinking-text">송금 후 화면을 보여주세요.</p>
 
-    <!-- 버튼을 클릭해야 계좌번호가 복사됩니다 -->
-    <button class="copy-button" onclick="copyAccountNumber()">계좌번호 다시 복사하기</button>
+  <!-- 버튼을 클릭해야 계좌번호가 복사됩니다 -->
+  <button class="copy-button" onclick="copyAccountNumber()">계좌번호 복사하기</button>
 
-    <h3 style="text-align: center;">찾기 힘드시면 송금하실 은행앱을 검색해주세요</h3>
+  <h3 style="text-align: center;">찾기 힘드시면 송금하실 은행앱을 검색해주세요</h3>
 
-    <div class="app-icons">
-        <div>
-            <img src="https://raw.githubusercontent.com/plllllyh/yh/main/googleplaystore.png" alt="Google Play Store">
-            <a href="javascript:void(0);" onclick="openStoreLink()">Google Play Store</a>
-        </div>
-        <div>
-            <img src="https://raw.githubusercontent.com/plllllyh/yh/main/appstore.png" alt="App Store">
-            <a href="javascript:void(0);" onclick="openStoreLink()">App Store</a>
-        </div>
+  <div class="app-icons">
+    <div>
+      <img src="https://pllllyh.github.io/yh/googleplaystore.png" alt="Google Play Store">
+      <a href="javascript:void(0);" onclick="openStoreLink()">Google Play Store</a>
     </div>
+    <div>
+      <img src="https://pllllyh.github.io/yh/appstore.png" alt="App Store">
+      <a href="javascript:void(0);" onclick="openStoreLink()">App Store</a>
+    </div>
+  </div>
 
-    <p class="footer-text">팔음산자기발전소 관리기숙아카데미</p>
+  <p class="footer-text">팔음산자기발전소 관리기숙아카데미</p>
 </body>
 </html>
