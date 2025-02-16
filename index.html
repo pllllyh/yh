@@ -19,17 +19,20 @@
             font-style: normal;
         }
         body {
-            background-color: #d0f8b7; /* 배경색 d0f8b7로 설정 */
+            background-color: #d0f8b7;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
         }
         .app-icons {
             display: flex;
-            flex-direction: column; /* 상하 배치 */
+            flex-direction: column;
             align-items: center;
             margin-top: 20px;
         }
         .app-icons div {
             text-align: center;
-            margin: 20px 0; /* 상하 간격 설정 */
+            margin: 20px 0;
         }
         .app-icons img {
             width: 60px;
@@ -53,11 +56,11 @@
             bottom: 10px;
             left: 0;
             right: 0;
-            font-family: 'HoonWhiteCat', sans-serif; /* 1훈하얀고양이 폰트 적용 */
-            font-size: 19px; /* 글씨 크기 3pt 증가 */
+            font-family: 'HoonWhitecat', sans-serif;
+            font-size: 22px;
             font-weight: bold;
-            color: white; /* 글자 흰색 */
-            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* 테두리 검정 */
+            color: white;
+            text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
         }
         .highlight {
             color: #6aa120;
@@ -73,6 +76,8 @@
             border-radius: 5px;
             text-align: center;
             animation: blink 1s infinite;
+            margin: 20px auto;
+            width: fit-content;
         }
 
         @keyframes blink {
@@ -82,6 +87,22 @@
             50% {
                 opacity: 0;
             }
+        }
+        
+        /* 중앙에 크게 배치된 복사 버튼 */
+        .copy-button {
+            display: block;
+            width: 90%;
+            max-width: 350px;
+            margin: 40px auto;
+            padding: 20px;
+            font-size: 24px;
+            background-color: #6aa120;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
         }
     </style>
 
@@ -94,7 +115,7 @@
             tempInput.select();
             document.execCommand("copy");
             document.body.removeChild(tempInput);
-            alert("계좌번호가 복사되었습니다: " + accountNumber);
+            // alert 창 제거 – 복사 후 팝업 없이 복사만 진행합니다.
         }
 
         function getPlatform() {
@@ -113,9 +134,9 @@
             let url = '';
 
             if (platform === 'android') {
-                url = 'https://play.google.com/store/apps'; // Google Play Store로 이동
+                url = 'https://play.google.com/store/apps';
             } else if (platform === 'ios') {
-                url = 'https://apps.apple.com/'; // App Store로 이동
+                url = 'https://apps.apple.com/';
             } else {
                 alert('지원하지 않는 플랫폼입니다.');
                 return;
@@ -125,27 +146,27 @@
         }
     </script>
 </head>
-<body onload="copyAccountNumber()">
+<body>
+    <h2 style="text-align: center;"><span class="highlight">[농협]</span> 936-12-101085 김병수</h2>
+    <p class="small-text">인쇄, 현금인출, 매점구매 관련</p>
+    <p class="blinking-text">송금 후 화면을 보여주세요.</p>
 
-    <h2><span class="highlight">[농협]</span> 936-12-101085 김병수</h2>
-    <p class="small-text">인쇄, 현금인출, 매점구매 관련</p> <!-- 인쇄 관련 문구 위치 수정 -->
-    <p class="blinking-text">송금 후 화면을 보여주세요.</p> <!-- 깜박이는 텍스트 적용 -->
+    <!-- 버튼을 클릭해야 계좌번호가 복사됩니다 -->
+    <button class="copy-button" onclick="copyAccountNumber()">계좌번호 다시 복사하기</button>
 
-    <button onclick="copyAccountNumber()">계좌번호 다시 복사하기</button>
-
-    <h3>찾기 힘드시면 송금하실 은행앱을 검색해주세요</h3>
+    <h3 style="text-align: center;">찾기 힘드시면 송금하실 은행앱을 검색해주세요</h3>
 
     <div class="app-icons">
         <div>
-            <img src="https://raw.githubusercontent.com/pllllyh/yh/main/googleplaystore.png" alt="Google Play Store">
+            <img src="https://raw.githubusercontent.com/plllllyh/yh/main/googleplaystore.png" alt="Google Play Store">
             <a href="javascript:void(0);" onclick="openStoreLink()">Google Play Store</a>
         </div>
         <div>
-            <img src="https://raw.githubusercontent.com/pllllyh/yh/main/appstore.png" alt="App Store">
+            <img src="https://raw.githubusercontent.com/plllllyh/yh/main/appstore.png" alt="App Store">
             <a href="javascript:void(0);" onclick="openStoreLink()">App Store</a>
         </div>
     </div>
 
-    <p class="footer-text">팔음산자기발전소 관리기숙아카데미</p> <!-- 텍스트 수정 및 글씨 크기 3pt 증가 -->
+    <p class="footer-text">팔음산자기발전소 관리기숙아카데미</p>
 </body>
 </html>
